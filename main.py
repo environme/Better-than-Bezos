@@ -168,7 +168,7 @@ def checkAnswer(total_money):
   questionPicker = random.choice(questions)
   answer = input(questionPicker)
   index = questions.index(questionPicker)
-  # question 1
+  # question 1, checks answers and takes/gives money to user depending on whether or not they went to college
   if index == 0:
     if answer =="A":
       print("That's correct! Now you know what to get Mr. Temple when you need to bribe him ;)")
@@ -197,7 +197,7 @@ def checkAnswer(total_money):
         total_money += 25
         print("\nYour new balance is: $" + str(total_money))
     else:
-      print("Oop that's wrong :/ I bet you guessed 1D because honoestly they are the best. You lost $10.")
+      print("Oop that's wrong :/ I bet you guessed 1D because honoestly they are the best. You lost $100.")
       total_money -= 100
       print("\nYour new balance is: $" + str(total_money))
   # question 3
@@ -213,7 +213,7 @@ def checkAnswer(total_money):
         total_money += 25
         print("\nYour new balance is: $" + str(total_money))
     else:
-      print("Oop that's wrong :/ Don't feel bad, I don't think anyone can really guess this one. You lost $10.")
+      print("Oop that's wrong :/ Don't feel bad, I don't think anyone can really guess this one. You lost $100.")
       total_money -= 100
       print("\nYour new balance is: $" + str(total_money))
   # question 4
@@ -245,7 +245,7 @@ def checkAnswer(total_money):
         total_money += 25
         print("\nYour new balance is: $" + str(total_money))
     else:
-      print("Oop that's wrong :/ You lost $10.")
+      print("Oop that's wrong :/ You lost $100.")
       total_money -= 100
       print("\nYour new balance is: $" + str(total_money))
   # question 6
@@ -277,7 +277,7 @@ def checkAnswer(total_money):
         total_money += 25
         print("\nYour new balance is: $" + str(total_money))
     else:
-      print("Oop that's wrong :/ Mr. Khan wishes he has this car. You lost $10.")
+      print("Oop that's wrong :/ Mr. Khan wishes he has this car. You lost $100.")
       total_money -= 100
       print("\nYour new balance is: $" + str(total_money))
   # question 8
@@ -293,7 +293,7 @@ def checkAnswer(total_money):
         total_money += 25
         print("\nYour new balance is: $" + str(total_money))
     else:
-      print("Oop that's wrong :/ Come on you know better than this, smh. You lost $10.")
+      print("Oop that's wrong :/ Come on you know better than this, smh. You lost $100.")
       total_money -= 100
       print("\nYour new balance is: $" + str(total_money))
   questions.remove(questionPicker)
@@ -337,10 +337,12 @@ def drawSmiley():
 
 
 while 1>0:
-  
+  # rolls computer dice
   computerDice = random.randint(1,4)
+  # tracks amount of turns the player has played
   newRoll(moved_spaces, totalRolls)
   totalRolls += 1
+  #adds to big boy bezos' money and whether or not the user wins
   for i in range(1, computerDice + 1):
     computerTotalMoney += 10
     if total_money == 600:
@@ -353,9 +355,12 @@ while 1>0:
       character.hideturtle()
       drawSmiley()
       raise SystemExit()
+  #prints how much money bezos has
   print("Bezos has $" + str(computerTotalMoney))
+  #for every even roll, the user has to answer a question
   if totalRolls%2 == 0:
     checkAnswer(total_money)
+  #different life events that gains/loses money
   elif totalRolls == 3:
     secondPathInput = input("Will you get married? Press enter to find out!")
     secondPathList = ["marriage", "no marriage"]
